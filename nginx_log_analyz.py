@@ -23,7 +23,7 @@ def count_cpu_heshu():                      #统计cpu核数函数
 def count_memory_size():                   #统计系统内存大小函数
     mem_sum=int(os.popen("free -m|awk  '{print $2}'|sed -n '2p'").readline().strip())  #统计内存的shell
     return mem_sum                                                                     #返回内存大小
-def nginx_log_fenge():                    #因nginx日志太大，需要按500M分割，建立此函数进行分割日志
+def nginx_log_cut():                    #因nginx日志太大，需要按500M分割，建立此函数进行分割日志
     if os.path.exists('/data/logs/nginx_tmp/')!=True:       #分割日志的临时目录
        os.makedirs('/data/logs/nginx_tmp/')
     if os.path.exists('/data/logs/nginx_tmp_binfa/')!=True: #并发目录
@@ -184,7 +184,7 @@ def main():
         os.mkdir('/data/logs/nginx_tmp_txt02/')
    write_report_email()
    rmdir_nginx_log_mulu() 
-nginx_log_fenge()
+nginx_log_cut()
 main()
 stop_time=int(time.strftime('%H%M%S'))
 print stop_time
