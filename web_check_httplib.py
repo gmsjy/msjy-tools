@@ -2,6 +2,7 @@
 
 import httplib
 import sys
+import socket
 
 def check_webserver(address, port, resource):
     ''' create a Http socket '''
@@ -18,7 +19,7 @@ def check_webserver(address, port, resource):
         response = conn.getresponse()
         print 'response status: {}'.format(response.status)
 
-    except sock.error, e:
+    except socket.error, e:
         print "HTTP connection failed: {}".format(e)
         return False
     finally:
