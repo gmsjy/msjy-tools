@@ -1,13 +1,13 @@
 #!/bin/python
-#deliver the file by the lines
+# deliver the file by the lines
 
 from socket import *
 import os
 import time
 
-ADDR = ('127.0.0.1',8888)
+ADDR = ('127.0.0.1', 8888)
 BUFSIZE = 1024
-logfile='./transinfo.log'
+logfile = './transinfo.log'
 
 ip='177.89.10.45'
 filename = '/home/vagrant/web_log/http.log'
@@ -39,3 +39,4 @@ except:
     sendSock.close()
 
 sendSock.close()
+
