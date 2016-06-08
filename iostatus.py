@@ -37,8 +37,8 @@ def collect_info():
                     write_io = int(strip(cut_info[1]))
             _tmp[i] = {"name":process_name, "read_bytes":read_io, "write_bytes":write_io}
     return _tmp
-  
-  
+
+
 def main(_sleep_time, _list_num):
     _sort_read_dict = {}
     _sort_write_dict = {}
