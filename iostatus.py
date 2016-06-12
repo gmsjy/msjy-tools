@@ -80,17 +80,24 @@ def main(_sleep_time, _list_num):
   
   
 if __name__ == '__main__':
-    try:
-        _sleep_time = sys.argv[1]
-    except:
-        _sleep_time = 3
-    try:
-        _num = sys.argv[2]
-    except:
-        _num = 3
-    try:
-        loop = sys.argv[3]
-    except:
-        loop = 1
-    for i in range(int(loop)):
-        main(int(_sleep_time), int(_num))
+    from optparse import OptionParser
+    parser = OptionParser()
+    parser.add_option("-s", "--sleepTime", dest="time", default="3", help=u"数据采集间隔时间", metavar="SLEEPTIME")
+    parser.add_option("-n","--num",dest="num",type="int",default=3,help="The data mining times",metavar="NUMBER")
+    parser.add_option("-l", "--loops", dest="loops", type="int", default=1, help="The program loops times", metavar="LOOPS")
+    (options, args) = parser.parse_args()
+    
+    #try:
+    #    _sleep_time = sys.argv[1]
+    #except:
+    #    _sleep_time = 3
+    #try:
+    #    _num = sys.argv[2]
+    #except:
+    #    _num = 3
+    #try:
+    #    loop = sys.argv[3]
+    #except:
+    #    loop = 1
+    for i in range(int(options.loops)):
+        main(int(options.time), int(options.num))
