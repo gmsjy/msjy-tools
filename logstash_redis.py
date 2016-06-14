@@ -9,7 +9,6 @@ class CRedis:
         self.host = host
         self.port = port
         self.db = db
-        self.channel = channel
         self.conn = redis.Redis(self.host, self.port)
 
     def setChannel(self, channel):
@@ -19,3 +18,9 @@ class CRedis:
 
     def publishMsg(self, message):
         '''publish the message'''
+        self.conn.publish(self.channel, message)
+        return self
+
+
+
+
