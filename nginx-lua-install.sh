@@ -2,6 +2,9 @@
 
 WORKDIR=$(pwd)/
 
+#The install base soft
+yum install -y gcc gcc-c++ readline-devel pcre-devel openssl-devel tcl perl
+
 #install luajit 
 wget http://luajit.org/download/LuaJIT-2.0.4.tar.gz
 tar zxvf LuaJIT-2.0.4.tar.gz
@@ -32,3 +35,7 @@ export LUAJIT_INC=/usr/local/include/luajit-2.0
 make && make install
 
 cd ${WORKDIR}
+
+#install the OpenResty
+wget https://openresty.org/download/openresty-1.9.15.1.tar.gz
+tar zxvf openresty-1.9.15.1.tar.gz
