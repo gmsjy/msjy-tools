@@ -21,7 +21,7 @@ class MyTCPHandler(SocketServer.BaseRequestHandler):
         self.request.sendall(self.data.upper())
 
 if __name__ == "__main__":
-    HOST, PORT = "localhost", 8989
+    HOST, PORT = "localhost", 6666
     # Create the server, binding to localhost on port 21577
     SocketServer.TCPServer.allow_reuse_address = True
     server = SocketServer.TCPServer((HOST, PORT), MyTCPHandler)

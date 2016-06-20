@@ -67,6 +67,7 @@ class send_file(object):
 if __name__ == "__main__":
     node_three = send_file(ADDR, ip, file_name)
     node_three.send()
+    
 
 
 
