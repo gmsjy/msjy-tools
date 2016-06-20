@@ -43,7 +43,7 @@ class send_file(object):
                     add_source_ip = lambda log,ip: log+' '+ip
                     line_new = add_source_ip(line, source_ip)
                     # lineNew = lineNew + ' {} '.format(linesNum)
-                    sendSock.send(line_new+'\n')
+                    self.send_sock.send(line_new+'\n')
                     self.line_num += 1
         except:
             info = "  {}  {}".format(log_file_name, self.line_num)
