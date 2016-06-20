@@ -12,17 +12,21 @@ BUFSIZE = 1024
 logfile = './transinfo.log'
 
 ip='177.89.10.45'
-filename = '/home/vagrant/web_log/http.log'
+file_name = '/home/vagrant/web_log/http.log'
 
 
 
 class send_file(object):
     ''' class for the file send '''
-    def __init__(self, addr, log_file, send_sock):
+    def __init__(self, addr , source_ip, file_name, send_sock):
         self.addr = addr
-        self.log_file = log_file
+        self.log_file = "./transinfo.log"
         self.send_sock = send_sock
         self.line_num = 1
+
+    def set_logfile(self, logfile):
+        self.log_file = logfile
+        return self
 
     def loging(self, info):
         currentTime = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
@@ -30,19 +34,19 @@ class send_file(object):
             info = '\n' + currentTime+' '+info
             f.write(info)
 
-    def send(self, log_filename, source_ip):
+    def send(self, log_file_name, source_ip):
         self.send_sock.connect(self.addr)
         try:
-            with open(filename,'rb') as f:
+            with open(file_name,'rb') as f:
                 for line in f:
                     line = line.strip('\n')
                     add_source_ip = lambda log,ip: log+' '+ip
-                    line_new = addSource(line, source_ip)
+                    line_new = add_source_ip(line, source_ip)
                     # lineNew = lineNew + ' {} '.format(linesNum)
                     sendSock.send(line_new+'\n')
                     self.line_num += 1
         except:
-            info = "  {}  {}".format(log_filename, self.line_num)
+            info = "  {}  {}".format(log_file_name, self.line_num)
             self.loging(info)
             self.send_sock.close()
         info = "The {ip} logfile trans finish !"
@@ -53,7 +57,7 @@ class send_file(object):
 if __name__ == "__main__":
     send_sock = socket(AF_INET, SOCK_STREAM)
     node3 = send_file(ADDR,logfile,send_sock)
-    node3.send(filename,ip)
+    node3.send(file_name,ip)
 
 
 
