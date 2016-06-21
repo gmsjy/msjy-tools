@@ -23,7 +23,7 @@ class send_file(object):
         self.source_ip = source_ip
         self.file_name = file_name
         self.log_file = "./transinfo.log"
-        self.send_sock = socket(family=AF_INET, type=SOCK_STREAM, proto=0, fileno=None)
+        self.send_sock = socket(family=AF_INET, type=SOCK_STREAM, proto=0)
         self.line_num = 1
         self.info = ""
 
