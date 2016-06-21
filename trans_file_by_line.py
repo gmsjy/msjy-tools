@@ -59,7 +59,7 @@ class send_file(object):
             self.info = "  {}  {}".format(self.file_name, self.line_num)
             self.loging()
             self.send_sock.close()
-        self.info = "The {ip} logfile trans finish !"
+        self.info = "The {ip} logfile trans finish !".format(self.source_ip)
         self.loging()
         self.send_sock.close()
 
