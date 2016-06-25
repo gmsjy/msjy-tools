@@ -23,7 +23,7 @@ class send_file(object):
         self.source_ip = source_ip
         self.file_name = file_name
         self.log_file = "./transinfo.log"
-        self.send_sock = socket(family=AF_INET, type=SOCK_STREAM, proto=0, fileno=None)
+        self.send_sock = socket(family=AF_INET, type=SOCK_STREAM, proto=0)
         self.line_num = 1
         self.info = ""
 
@@ -59,7 +59,7 @@ class send_file(object):
             self.info = "  {}  {}".format(self.file_name, self.line_num)
             self.loging()
             self.send_sock.close()
-        self.info = "The {ip} logfile trans finish !"
+        self.info = "The {ip} logfile trans finish !".format(self.source_ip)
         self.loging()
         self.send_sock.close()
 
