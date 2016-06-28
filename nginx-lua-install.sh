@@ -39,3 +39,5 @@ cd ${WORKDIR}
 #install the OpenResty
 wget https://openresty.org/download/openresty-1.9.15.1.tar.gz
 tar zxvf openresty-1.9.15.1.tar.gz
+cd openresty-1.9.15.1
+./configure --prefix=/opt/openresty
