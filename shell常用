@@ -13,3 +13,16 @@ if [[ $# -ne 2 ]]; then
     echo "USAGE: $basename 201606 20160601"
     exit 1
 fi
+
+## 清空,备份文件
+
+function empty_bacup_file ()
+
+{
+
+    for file in "$@"
+    do
+        cat ${file} |gzip --best -c > ${file}-$(date +%Y-%m-%d).gz && echo "" > ${file}
+    done
+
+}
