@@ -1,0 +1,57 @@
+# 列出几个文件夹内占据空间最大的目录或是文件
+
+    du -cms dir |sort -rn |head -n 20
+
+## 改进版：
+
+    find  dir -type f -print |xargs du -csm |sort -rn |head -n 21 |tail -n 20
+
+
+
+# 备份文件
+
+    cp filename{,bak}
+
+
+
+# 辅助时钟
+
+    while sleep 0.1;do tput sc;tput cup 0 $(($(tput cols)-29));date;tput rc;done &
+
+## 改进版
+    while sleep 1;do 
+    tput sc;tput setaf 2;tput cup 0 $(($(tput cols)-30));uptime | awk '{print $(NF-4),$(NF-3),$(NF-2),$(NF-1),$NF}';
+    tput cup 1 $(($(tput cols)-29));grep MemFree /proc/meminfo;
+    tput cup 2 $(($(tput cols)-29));date;tput rc;
+    done &
+
+
+## 程序放到后台
+
+Command; disown -a && exit 
+
+
+
+tree | convert label:@- /home/avi/tree.png 
+
+
+## 删除未释放空间，单位为M
+
+lsof |grep delete |awk 'BEGIN{size=0} {size = size + $7} END{print size/1024/1024} '
+
+
+## 清空,备份文件
+
+cat install.log |gzip --best -c > install-$(date +%Y-%m-%d).log.gz && echo "" > install.log
+
+## 查看redis连接状态，端口6379
+
+watch -n 0.1 "netstat -nta |awk '{print \$6,\$5}'| grep 6379 |sort|uniq -c"
+
+## 统计访问次数前十
+
+awk '{print $1}' access.log |sort|uniq -c|sort -nr|head -10
+
+
+## centos更改网卡名称
+setup 设置后，重启生效
