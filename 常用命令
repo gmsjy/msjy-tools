@@ -55,3 +55,11 @@ awk '{print $1}' access.log |sort|uniq -c|sort -nr|head -10
 
 ## centos更改网卡名称
 setup 设置后，重启生效
+
+## 获取主机对外ip
+
+ifconfig |grep "inet addr"|cut -d ":" -f 2|cut -d " " -f 1 |grep -v "^127"|grep -v "^10"
+
+## 列出服务器上所有定时任务
+
+for user in $(cut -f1 -d: /etc/passwd); do crontab -u $user -l; done

@@ -6,3 +6,5 @@ python标准库介绍： http://wiki.woodpecker.org.cn/moin/PythonStandardLib/ch
 
 OpenResty最佳实践： https://moonbingbing.gitbooks.io/openresty-best-practices/content/lua/class.html
 
+## linux 命令大全
+http://man.linuxde.net/
