@@ -63,3 +63,6 @@ ifconfig |grep "inet addr"|cut -d ":" -f 2|cut -d " " -f 1 |grep -v "^127"|grep 
 ## 列出服务器上所有定时任务
 
 for user in $(cut -f1 -d: /etc/passwd); do crontab -u $user -l; done
+
+
+## visudo 可以改变用户执行权限
