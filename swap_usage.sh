@@ -5,6 +5,8 @@
 #
 # Get current swap usage for all running processes
 # Erik Ljungstrom 27/05/2011
+# For the swap report
+
 SUM=0
 OVERALL=0
 for DIR in `find /proc/ -maxdepth 1 -type d | egrep "^/proc/[0-9]"`  
